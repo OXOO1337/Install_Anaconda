@@ -25,13 +25,19 @@ def Update_Install_Anaconda3():
 			os.system("sudo apt-get update")
 		elif menu == "2":
 			os.system("sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 curl -y")
-			os.system("cd /tmp && curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh")
-			os.system("cd /tmp && bash Anaconda3-2019.10-Linux-x86_64.sh")
+			os.system("cd /tmp && curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh")
+			os.system("cd /tmp && bash Anaconda3-2020.02-Linux-x86_64.sh")
 			os.system("source ~/.bashrc")
 			os.system("conda info")
 			os.system("conda update conda")
-			os.system("sudo rm /tmp/Anaconda3-2019.10-Linux-x86_64.sh")
+			os.system("sudo rm /tmp/Anaconda3-2020.02-Linux-x86_64.sh")
 			os.system("conda update anaconda")
+			file = open('.bashrc', 'a')
+			file.write('\nexport PATH=/home/$USERNAME/anaconda3/bin:$PATH')
+			file.close()
+			os.system("clear")
+			print("\033[1;37m\n\nPlease restart\033[1;31mTerminal.\n\n\u001b[0m")
+			exit()
 		elif menu == "0":
 			os.system("clear")
 			main()
@@ -50,7 +56,7 @@ def Run_Anaconda3():
 		menu = input("\033[1;32mNumber:  \u001b[0m")
 		if menu == "1":
 			os.system("clear")
-			os.system("source /home/$USERNAME/anaconda3/bin/activate;anaconda-navigator")
+			os.system("anaconda-navigator")
 		elif menu == "2":
 			os.system("clear")
 			os.system("conda config --set auto_activate_base False;")
